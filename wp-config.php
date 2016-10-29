@@ -29,7 +29,11 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'D3lbarton17!');
 
 /** MySQL hostname */
-define('DB_HOST', '104.197.161.159');
+if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
+  define('DB_HOST', ':/cloudsql/wordpress:wordpress');
+}else{
+  define('DB_HOST', 'localhost');
+}
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
